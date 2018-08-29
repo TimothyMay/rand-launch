@@ -57,14 +57,18 @@ namespace RandLaunch
                     Random random = new Random();
                     int randomNumber = random.Next(0, count);
 
-                    var fileName = episodes[randomNumber];
-                    string[] parts = fileName.Split('\\');
+                    if (episodes.Count > 0)
+                    {
+                        var fileName = episodes[randomNumber];
+                        string[] parts = fileName.Split('\\');
+                        MessageBox.Show("Playing " + parts[parts.Length - 1]);
 
-                    MessageBox.Show("Playing " + parts[parts.Length - 1]);
-
-                    System.Diagnostics.Process.Start(episodes[randomNumber]);
-
-                    this.Close();
+                        System.Diagnostics.Process.Start(episodes[randomNumber]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Files Found");
+                    }
                 }
             }
         }
