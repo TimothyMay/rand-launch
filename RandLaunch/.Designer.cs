@@ -34,7 +34,10 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.buttonOpen = new System.Windows.Forms.Button();
+            this.dataGridViewFoundFiles = new System.Windows.Forms.DataGridView();
+            this.buttonChoose = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFoundFiles)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -43,7 +46,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(399, 24);
+            this.menuStrip.Size = new System.Drawing.Size(384, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -70,17 +73,39 @@
             // 
             this.buttonOpen.Location = new System.Drawing.Point(12, 27);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(100, 25);
+            this.buttonOpen.Size = new System.Drawing.Size(360, 25);
             this.buttonOpen.TabIndex = 1;
             this.buttonOpen.Text = "Open Directory";
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
+            // dataGridViewFoundFiles
+            // 
+            this.dataGridViewFoundFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFoundFiles.Location = new System.Drawing.Point(12, 58);
+            this.dataGridViewFoundFiles.Name = "dataGridViewFoundFiles";
+            this.dataGridViewFoundFiles.RowHeadersVisible = false;
+            this.dataGridViewFoundFiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewFoundFiles.Size = new System.Drawing.Size(360, 261);
+            this.dataGridViewFoundFiles.TabIndex = 2;
+            // 
+            // buttonChoose
+            // 
+            this.buttonChoose.Location = new System.Drawing.Point(12, 325);
+            this.buttonChoose.Name = "buttonChoose";
+            this.buttonChoose.Size = new System.Drawing.Size(360, 25);
+            this.buttonChoose.TabIndex = 3;
+            this.buttonChoose.Text = "Choose";
+            this.buttonChoose.UseVisualStyleBackColor = true;
+            this.buttonChoose.Click += new System.EventHandler(this.buttonChoose_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 63);
+            this.ClientSize = new System.Drawing.Size(384, 362);
+            this.Controls.Add(this.buttonChoose);
+            this.Controls.Add(this.dataGridViewFoundFiles);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
@@ -88,6 +113,7 @@
             this.Text = "Open Random File";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFoundFiles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,6 +127,8 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.ToolStripMenuItem setDefaultLocationToolStripMenuItem;
         private System.Windows.Forms.Button buttonOpen;
+        private System.Windows.Forms.DataGridView dataGridViewFoundFiles;
+        private System.Windows.Forms.Button buttonChoose;
     }
 }
 

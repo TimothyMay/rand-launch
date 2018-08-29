@@ -16,6 +16,8 @@ namespace RandLaunch
         public static XMLProbe _settingsProbe;
         public static string _sampleText;
 
+        public List<FileMetaData> episodes = new List<FileMetaData>();
+
         public MainForm()
         {
             //Create a new settings probe, providing config path as arg ('\' escaped).
@@ -51,29 +53,49 @@ namespace RandLaunch
 
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    int count = 0;
-                    List<String> episodes = new List<String>();
-
+                    episodes.Clear();
                     foreach (var file in Directory.GetFiles(fbd.SelectedPath, "*.*", SearchOption.AllDirectories)
                         .Where(s => s.EndsWith(".mp4") || s.EndsWith(".mkv") || s.EndsWith(".avi")))
                     {
-                        episodes.Add(file);
-                        count++;
+                        FileMetaData fileMeta = new FileMetaData();
+                        fileMeta.Path = file;
+                        fileMeta.FileName = Path.GetFileNameWithoutExtension(file);
+                        fileMeta.Extension = Path.GetExtension(file);
+
+                        episodes.Add(fileMeta);
                     }
-                    //System.Windows.Forms.MessageBox.Show("Files found: " + count, "Message");
-                    Random random = new Random();
-                    int randomNumber = random.Next(0, count);
 
-                    var fileName = episodes[randomNumber];
-                    string[] parts = fileName.Split('\\');
+                    DataGridViewColumn column = new DataGridViewTextBoxColumn();
+                    column.DataPropertyName = "FileName";
+                    column.Name = "File Name";
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewFoundFiles.Columns.Add(column);
 
-                    MessageBox.Show("Playing " + parts[parts.Length - 1]);
+                    column = new DataGridViewTextBoxColumn();
+                    column.DataPropertyName = "Extension";
+                    column.Width = 60;
+                    column.Name = "Extension";
+                    dataGridViewFoundFiles.Columns.Add(column);
 
-                    System.Diagnostics.Process.Start(episodes[randomNumber]);
-
-                    this.Close();
+                    dataGridViewFoundFiles.AutoGenerateColumns = false;
+                    dataGridViewFoundFiles.DataSource = episodes;
+                    dataGridViewFoundFiles.ClearSelection();
                 }
             }
+        }
+
+        private void buttonChoose_Click(object sender, EventArgs e)
+        {
+            //System.Windows.Forms.MessageBox.Show("Files found: " + count, "Message");
+            Random random = new Random();
+            int randomNumber = random.Next(0, episodes.Count - 1);
+            var fileMetaData = episodes[randomNumber];
+
+            MessageBox.Show("Playing " + fileMetaData.FileName);
+
+            System.Diagnostics.Process.Start(fileMetaData.Path);
+
+            //this.Close();
         }
     }
 }

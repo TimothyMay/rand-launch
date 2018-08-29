@@ -8,3 +8,14 @@ C:\Users\Tim\source\repos\RandLaunch\RandLaunch\obj\Debug\RandLaunch.csproj.Gene
 C:\Users\Tim\source\repos\RandLaunch\RandLaunch\obj\Debug\RandLaunch.csproj.CoreCompileInputs.cache
 C:\Users\Tim\source\repos\RandLaunch\RandLaunch\obj\Debug\RandLaunch.exe
 C:\Users\Tim\source\repos\RandLaunch\RandLaunch\obj\Debug\RandLaunch.pdb
+D:\Projects\rand-launch\RandLaunch\bin\Debug\config\Settings.xml
+D:\Projects\rand-launch\RandLaunch\bin\Debug\RandLaunch.exe.config
+D:\Projects\rand-launch\RandLaunch\bin\Debug\RandLaunch.exe
+D:\Projects\rand-launch\RandLaunch\bin\Debug\RandLaunch.pdb
+D:\Projects\rand-launch\RandLaunch\obj\Debug\RandLaunch.csprojAssemblyReference.cache
+D:\Projects\rand-launch\RandLaunch\obj\Debug\RandLaunch.MainForm.resources
+D:\Projects\rand-launch\RandLaunch\obj\Debug\RandLaunch.Properties.Resources.resources
+D:\Projects\rand-launch\RandLaunch\obj\Debug\RandLaunch.csproj.GenerateResource.cache
+D:\Projects\rand-launch\RandLaunch\obj\Debug\RandLaunch.csproj.CoreCompileInputs.cache
+D:\Projects\rand-launch\RandLaunch\obj\Debug\RandLaunch.exe
+D:\Projects\rand-launch\RandLaunch\obj\Debug\RandLaunch.pdb
