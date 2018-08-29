@@ -13,16 +13,9 @@ namespace RandLaunch
 {
     public partial class MainForm : Form
     {
-        public static XMLProbe _settingsProbe;
-        public static string _sampleText;
 
         public MainForm()
         {
-            //Create a new settings probe, providing config path as arg ('\' escaped).
-            _settingsProbe = new XMLProbe(Application.StartupPath + "\\Config\\Settings.xml");
-            _settingsProbe.SetWorkingNode("rand-launch");
-            _sampleText = _settingsProbe.GetSetting("Sample");
-
             InitializeComponent();
         }
 
