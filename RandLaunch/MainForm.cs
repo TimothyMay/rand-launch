@@ -26,7 +26,21 @@ namespace RandLaunch
             InitializeComponent();
         }
 
-        private void browseToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void setDefaultLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    Properties.Settings.Default.DefaultLocation = fbd.SelectedPath;
+                    Properties.Settings.Default.Save();
+                    MessageBox.Show("Default path set: " + fbd.SelectedPath);
+                }
+            }
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
@@ -58,19 +72,6 @@ namespace RandLaunch
                     System.Diagnostics.Process.Start(episodes[randomNumber]);
 
                     this.Close();
-                }
-            }
-        }
-
-        private void setDefaultLocationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var fbd = new FolderBrowserDialog())
-            {
-                if (fbd.ShowDialog() == DialogResult.OK)
-                {
-                    Properties.Settings.Default.DefaultLocation = fbd.SelectedPath;
-                    Properties.Settings.Default.Save();
-                    MessageBox.Show("Default path set: " + fbd.SelectedPath);
                 }
             }
         }
