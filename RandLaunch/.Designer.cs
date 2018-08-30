@@ -73,7 +73,7 @@
             // 
             this.buttonOpen.Location = new System.Drawing.Point(12, 27);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(360, 25);
+            this.buttonOpen.Size = new System.Drawing.Size(100, 25);
             this.buttonOpen.TabIndex = 1;
             this.buttonOpen.Text = "Open Directory";
             this.buttonOpen.UseVisualStyleBackColor = true;
@@ -81,6 +81,9 @@
             // 
             // dataGridViewFoundFiles
             // 
+            this.dataGridViewFoundFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewFoundFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFoundFiles.Location = new System.Drawing.Point(12, 58);
             this.dataGridViewFoundFiles.Name = "dataGridViewFoundFiles";
@@ -91,9 +94,10 @@
             // 
             // buttonChoose
             // 
-            this.buttonChoose.Location = new System.Drawing.Point(12, 325);
+            this.buttonChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonChoose.Location = new System.Drawing.Point(272, 325);
             this.buttonChoose.Name = "buttonChoose";
-            this.buttonChoose.Size = new System.Drawing.Size(360, 25);
+            this.buttonChoose.Size = new System.Drawing.Size(100, 25);
             this.buttonChoose.TabIndex = 3;
             this.buttonChoose.Text = "Choose";
             this.buttonChoose.UseVisualStyleBackColor = true;
@@ -111,6 +115,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Open Random File";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFoundFiles)).EndInit();
