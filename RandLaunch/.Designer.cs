@@ -81,6 +81,11 @@
             // 
             // dataGridViewFoundFiles
             // 
+            this.dataGridViewFoundFiles.AllowUserToAddRows = false;
+            this.dataGridViewFoundFiles.AllowUserToDeleteRows = false;
+            this.dataGridViewFoundFiles.AllowUserToOrderColumns = true;
+            this.dataGridViewFoundFiles.AllowUserToResizeColumns = false;
+            this.dataGridViewFoundFiles.AllowUserToResizeRows = false;
             this.dataGridViewFoundFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
