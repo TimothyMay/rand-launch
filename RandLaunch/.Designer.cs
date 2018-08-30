@@ -87,10 +87,12 @@
             this.dataGridViewFoundFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFoundFiles.Location = new System.Drawing.Point(12, 58);
             this.dataGridViewFoundFiles.Name = "dataGridViewFoundFiles";
+            this.dataGridViewFoundFiles.ReadOnly = true;
             this.dataGridViewFoundFiles.RowHeadersVisible = false;
             this.dataGridViewFoundFiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewFoundFiles.Size = new System.Drawing.Size(360, 261);
             this.dataGridViewFoundFiles.TabIndex = 2;
+            this.dataGridViewFoundFiles.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFoundFiles_CellDoubleClick);
             // 
             // buttonChoose
             // 
@@ -115,7 +117,6 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Open Random File";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFoundFiles)).EndInit();

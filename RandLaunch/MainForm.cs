@@ -90,9 +90,12 @@ namespace RandLaunch
             //this.Close();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void dataGridViewFoundFiles_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            var fileMetaData = episodes[dataGridViewFoundFiles.Rows[e.RowIndex].Index];
+            MessageBox.Show("Playing " + fileMetaData.FileName);
 
+            System.Diagnostics.Process.Start(fileMetaData.Path);
         }
     }
 }
