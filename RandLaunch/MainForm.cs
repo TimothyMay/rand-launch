@@ -13,18 +13,40 @@ namespace RandLaunch
 {
     public partial class MainForm : Form
     {
-        public List<FileMetaData> episodes = new List<FileMetaData>();
+        public BindingList<FileMetaData> episodes = new BindingList<FileMetaData>();
 
         public MainForm()
         {
             InitializeComponent();
-        }
 
+            DataGridViewColumn column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "FileName";
+            column.Name = "File Name";
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewFoundFiles.Columns.Add(column);
+
+            column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "Extension";
+            column.Width = 60;
+            column.Name = "Extension";
+            dataGridViewFoundFiles.Columns.Add(column);
+
+            dataGridViewFoundFiles.AutoGenerateColumns = false;
+            dataGridViewFoundFiles.DataSource = episodes;
+            dataGridViewFoundFiles.ClearSelection();
+
+            PopulateEpisodeContainer(Properties.Settings.Default.DefaultLocation);
+        }
 
         private void setDefaultLocationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
+                if (Directory.Exists(Properties.Settings.Default.DefaultLocation))
+                {
+                    fbd.SelectedPath = Properties.Settings.Default.DefaultLocation;
+                }
+
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
                     Properties.Settings.Default.DefaultLocation = fbd.SelectedPath;
@@ -46,32 +68,7 @@ namespace RandLaunch
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
                     episodes.Clear();
-                    foreach (var file in Directory.GetFiles(fbd.SelectedPath, "*.*", SearchOption.AllDirectories)
-                        .Where(s => s.EndsWith(".mp4") || s.EndsWith(".mkv") || s.EndsWith(".avi")))
-                    {
-                        FileMetaData fileMeta = new FileMetaData();
-                        fileMeta.Path = file;
-                        fileMeta.FileName = Path.GetFileNameWithoutExtension(file);
-                        fileMeta.Extension = Path.GetExtension(file);
-
-                        episodes.Add(fileMeta);
-                    }
-
-                    DataGridViewColumn column = new DataGridViewTextBoxColumn();
-                    column.DataPropertyName = "FileName";
-                    column.Name = "File Name";
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridViewFoundFiles.Columns.Add(column);
-
-                    column = new DataGridViewTextBoxColumn();
-                    column.DataPropertyName = "Extension";
-                    column.Width = 60;
-                    column.Name = "Extension";
-                    dataGridViewFoundFiles.Columns.Add(column);
-
-                    dataGridViewFoundFiles.AutoGenerateColumns = false;
-                    dataGridViewFoundFiles.DataSource = episodes;
-                    dataGridViewFoundFiles.ClearSelection();
+                    PopulateEpisodeContainer(fbd.SelectedPath);
                 }
             }
         }
@@ -99,6 +96,22 @@ namespace RandLaunch
 
                 System.Diagnostics.Process.Start(fileMetaData.Path);
             }
+        }
+
+
+        private void PopulateEpisodeContainer(string location)
+        {
+            foreach (var file in Directory.GetFiles(location, "*.*", SearchOption.AllDirectories)
+                        .Where(s => s.EndsWith(".mp4") || s.EndsWith(".mkv") || s.EndsWith(".avi")))
+            {
+                FileMetaData fileMeta = new FileMetaData();
+                fileMeta.Path = file;
+                fileMeta.FileName = Path.GetFileNameWithoutExtension(file);
+                fileMeta.Extension = Path.GetExtension(file);
+
+                episodes.Add(fileMeta);
+            }
+
         }
     }
 }
