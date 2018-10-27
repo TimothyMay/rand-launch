@@ -35,7 +35,8 @@ namespace RandLaunch
             dataGridViewFoundFiles.DataSource = episodes;
             dataGridViewFoundFiles.ClearSelection();
 
-            PopulateEpisodeContainer(Properties.Settings.Default.DefaultLocation);
+            if (Directory.Exists(Properties.Settings.Default.DefaultLocation))
+                PopulateEpisodeContainer(Properties.Settings.Default.DefaultLocation);
         }
 
         private void setDefaultLocationToolStripMenuItem_Click(object sender, EventArgs e)
